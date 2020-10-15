@@ -27,10 +27,8 @@ PRODUCT_COPY_FILES += \
     device/blackview/bv9500plus/twrp.fstab:recovery/root/etc/twrp.fstab
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-	ro.adb.secure=0
-
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp,adb \
+	ro.adb.secure=0 \
+    persist.sys.usb.config=mtp \
     persist.service.adb.enable=1 \
     persist.service.debuggable=1
 
