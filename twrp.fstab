@@ -1,7 +1,7 @@
 #
 # Blackview BV9500 Plus
 #
-#flags=fileencryption=ice:aes-256-cts
+
 /otp			emmc	/dev/block/platform/bootdevice/by-name/otp
 /data			ext4	/dummydevice										flags=altdevice=/dev/block/platform/bootdevice/by-name/userdata;encryptable=/dev/block/platform/bootdevice/by-name/metadata
 /cache			ext4	/dev/block/platform/bootdevice/by-name/cache
