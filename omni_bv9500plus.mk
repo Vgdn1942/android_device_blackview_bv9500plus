@@ -23,9 +23,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 BUILD_FINGERPRINT := Blackview/BV9500Plus_EEA/BV9500Plus:9/PPR1.180610.011/root.20190813.133031:user/release-keys
 PLATFORM_SECURITY_PATCH := 2019-07-05
 
-PRODUCT_COPY_FILES += \
-    device/blackview/bv9500plus/twrp.fstab:recovery/root/etc/twrp.fstab
-
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	ro.adb.secure=0 \
     persist.sys.usb.config=mtp \
