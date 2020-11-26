@@ -16,7 +16,6 @@
 
 cc_library_static {
     name: "libinit_bv9500plus",
-    recovery_available: true,
     srcs: ["libinit_bv9500plus.cpp"],
     include_dirs: [
         "system/core/base/include",

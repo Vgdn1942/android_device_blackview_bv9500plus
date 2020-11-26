@@ -33,7 +33,10 @@
 
 #include <android-base/properties.h>
 #include "property_service.h"
-#include "vendor_init.h"
+//#include "vendor_init.h"
+
+namespace android {
+namespace init {
 
 using android::init::property_set;
 
@@ -95,3 +98,7 @@ void vendor_load_properties()
     property_override("ro.build.selinux", "0");
     property_override("ro.adb.secure", "1");
 }
+
+}  // namespace init
+}  // namespace android
+
