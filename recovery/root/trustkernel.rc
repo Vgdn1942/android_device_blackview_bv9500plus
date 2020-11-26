@@ -12,10 +12,15 @@ on fs
 	symlink /mnt/vendor/protect_s /vendor/protect_s
 	symlink /mnt/vendor/nvcfg /vendor/nvcfg
 	symlink /mnt/vendor/nvdata /vendor/nvdata
+
 	write /proc/bootprof "tkcore: prepare system ta path"
+	chown system system /vendor/app/t6
 
 	write /proc/bootprof "tkcore: prepare protect_f sfs"
+	restorecon /mnt/vendor/protect_f
 	mkdir /mnt/vendor/protect_f/tee
+	chown system system /mnt/vendor/protect_f/tee
+	restorecon /mnt/vendor/protect_f/tee
 	setprop vendor.trustkernel.fs.mode 2
 	setprop vendor.trustkernel.fs.state ready
 	start teed
@@ -24,12 +29,18 @@ on property:vendor.trustkernel.fs.state=ready
 	write /proc/bootprof "tkcore: prepare basic"
 	mkdir /data/vendor
 	mkdir /data/vendor/t6
+	chown system system /data/vendor/t6
+	restorecon /data/vendor/t6
 
 	write /proc/bootprof "tkcore: prepare sfs"
 	mkdir /data/vendor/t6/fs
+	chown system system /data/vendor/t6/fs
+	restorecon /data/vendor/t6/fs
 
 	write /proc/bootprof "tkcore: prepare service provider ta path"
 	mkdir /data/vendor/t6/app
+	chown system system /data/vendor/t6/app
+	restorecon /data/vendor/t6/app
 
 # For non-encrypted case
 on property:ro.crypto.state=unencrypted
@@ -48,6 +59,7 @@ on property:ro.crypto.type=file && property:ro.crypto.state=encrypted
 
 on property:vendor.trustkernel.log.state=ready
 	write /proc/bootprof "tkcore: prepare log file"
+	restorecon /data/vendor/t6/tkcore.log
 	setprop vendor.trustkernel.log.state enable
 
 service teed /sbin/teed \
@@ -59,5 +71,5 @@ service teed /sbin/teed \
     --proprefix vendor.trustkernel
 	user root
 	group root
-    disabled
-    seclabel u:r:recovery:s0
+	disabled
+	seclabel u:r:recovery:s0

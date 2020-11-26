@@ -1,0 +1,26 @@
+
+##############################
+# TrustKernel add
+#############################
+
+/(sbin|vendor\/bin)/teed u:object_r:tkcore_exec:s0
+
+/vendor/app/t6(/.*)? u:object_r:tkcore_systa_file:s0
+/mnt/vendor/persist/t6(/.*)? u:object_r:tkcore_protect_data_file:s0
+
+/data/vendor/t6(/.*)? u:object_r:tkcore_data_file:s0
+/data/vendor/t6/app(/.*)? u:object_r:tkcore_spta_file:s0
+/data/vendor/t6/tkcore.log u:object_r:tkcore_log_file:s0
+
+# nvdata
+/mnt/vendor/nvdata(/.*)? u:object_r:nvdata_file:s0
+/mnt/vendor/nvcfg(/.*)? u:object_r:nvcfg_file:s0
+
+# protected data file
+/mnt/vendor/protect_f(/.*)?      u:object_r:protect_f_data_file:s0
+/mnt/vendor/protect_s(/.*)?      u:object_r:protect_s_data_file:s0
+/mnt/vendor/persist(/.*)?        u:object_r:persist_data_file:s0
+
+# Keymaster Attestation Hal
+/(system\/vendor|vendor)/bin/hw/vendor\.mediatek\.hardware\.keymaster_attestation@1\.1-service u:object_r:hal_keymaster_attestation_exec:s0
+/sbin/vendor\.mediatek\.hardware\.keymaster_attestation@1\.1-service u:object_r:hal_keymaster_attestation_exec:s0
