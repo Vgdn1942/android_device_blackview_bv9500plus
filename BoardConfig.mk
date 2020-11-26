@@ -83,6 +83,10 @@ BOARD_AVB_ENABLE := false
 TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
 TARGET_RECOVERY_INITRC := $(LOCAL_PATH)/recovery/root/init.recovery.mt6771.rc
 
+# Vendor init
+TARGET_INIT_VENDOR_LIB := libinit_bv9500plus
+TARGET_RECOVERY_DEVICE_MODULES := libinit_bv9500plus
+
 # Recovery
 #TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/fstab.mt6771
