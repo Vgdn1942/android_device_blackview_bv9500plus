@@ -5,20 +5,25 @@ import /trustkernel.rc
 
 on init
     # Somehow AOSP build system hasn't provided a symlink here
-    symlink /system_root/system /system
-    # Create a more standard /dev/block layout for our scripts
-    symlink /dev/block/platform/bootdevice /dev/block/bootdevice
+    #symlink /system_root/system /system
 
     mkdir /vendor/lib64 0700 root root
     mkdir /vendor/lib64/hw 0700 root root
+    #mkdir /system/bin
+    #mkdir /system/etc
+    symlink /system/etc /etc
     symlink /vendor/manifest.xml /system_root/system/manifest.xml
     symlink /sbin/keystore.mt6771.so /vendor/lib64/hw/keystore.mt6771.so
     symlink /sbin/keystore.v2.trustkernel.so /vendor/lib64/hw/keystore.v2.trustkernel.so
     symlink /sbin/gatekeeper.mt6771.so /vendor/lib64/hw/gatekeeper.mt6771.so
+    symlink /sbin/busybox /system/bin/sh
     start hwservicemanager
     setprop crypto.ready 1
 
 on fs
+    wait /dev/block/platform/bootdevice
+    # Create a more standard /dev/block layout for our scripts
+    symlink /dev/block/platform/bootdevice /dev/block/bootdevice
     export ANDROID_ROOT /system_root
 
 on post-fs

@@ -1,3 +1,4 @@
 ro.product.board=s62v71c2k_jk_tee
 ro.crypto.volume.filenames_mode=aes-256-cts
-
+persist.sys.adb.shell=/sbin/sh
+persist.sys.usb.config=mtp,adb

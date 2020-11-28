@@ -84,8 +84,8 @@ TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
 TARGET_RECOVERY_INITRC := $(LOCAL_PATH)/recovery/root/init.recovery.mt6771.rc
 
 # Vendor init
-TARGET_INIT_VENDOR_LIB := libinit_bv9500plus
-TARGET_RECOVERY_DEVICE_MODULES := libinit_bv9500plus
+#TARGET_INIT_VENDOR_LIB := libinit_bv9500plus
+#TARGET_RECOVERY_DEVICE_MODULES := libinit_bv9500plus
 
 # Recovery
 #TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
@@ -119,10 +119,11 @@ TW_NO_BATT_PERCENT := false
 TW_SCREEN_BLANK_ON_BOOT := true
 
 #TW_CUSTOM_CPU_TEMP_PATH := /sys/class/thermal/thermal_zone4/temp
-TW_USE_TOOLBOX := true
+#TW_USE_TOOLBOX := true
+TW_FORCE_USE_BUSYBOX := true
 
 TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
-TW_DEVICE_VERSION := vgdn1942
+TW_DEVICE_VERSION := 3 by vgdn1942
 
 # Excludes
 TW_EXCLUDE_TWRPAPP := true
@@ -130,10 +131,6 @@ TW_EXCLUDE_SUPERSU := true
 
 # Encryption
 TW_INCLUDE_CRYPTO := true
-TW_CRYPTO_FS_TYPE := "ext4"
-TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/bootdevice/by-name/userdata"
-TW_CRYPTO_MNT_POINT := "/data"
-TW_CRYPTO_FS_OPTIONS := "nosuid,nodev,noatime,discard,noauto_da_alloc,data=ordered"
 
 TW_INCLUDE_REPACKTOOLS := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
@@ -149,7 +146,7 @@ TW_INCLUDE_FB2PNG := true
 TW_HAS_MTP := true
 TW_MTP_DEVICE := /dev/mtp_usb
 TW_DEFAULT_EXTERNAL_STORAGE := true
-TW_NO_USB_STORAGE := false
+TW_NO_USB_STORAGE := true
 
 # Languages
 TW_EXTRA_LANGUAGES := false
